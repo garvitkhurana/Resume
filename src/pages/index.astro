@@ -1,74 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const hero = `${import.meta.env.BASE_URL}hero.jpg`;
 ---
 <BaseLayout>
-  <div class="atmosphere" aria-hidden="true">
-    <svg class="atmosphere-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#1f6f5b" stop-opacity="0.35" />
-          <stop offset="55%" stop-color="#c45c26" stop-opacity="0.18" />
-          <stop offset="100%" stop-color="#1f6f5b" stop-opacity="0" />
-        </linearGradient>
-      </defs>
-      <g class="grid" stroke="rgba(20,32,28,0.09)" stroke-width="1" fill="none">
-        {Array.from({ length: 16 }, (_, i) => (
-          <line x1={i * 80} y1="0" x2={i * 80} y2="800" />
-        ))}
-        {Array.from({ length: 11 }, (_, i) => (
-          <line x1="0" y1={i * 80} x2="1200" y2={i * 80} />
-        ))}
-      </g>
-      <path class="beam" d="M-40 640 C 280 420, 520 520, 760 280 S 1180 120, 1280 40" stroke="url(#beam)" stroke-width="90" fill="none" stroke-linecap="round" />
-      <circle class="orb orb-a" cx="980" cy="160" r="120" fill="rgba(31,111,91,0.12)" />
-      <circle class="orb orb-b" cx="220" cy="520" r="160" fill="rgba(196,92,38,0.08)" />
-    </svg>
-  </div>
-
   <header class="hero">
-    <div class="wrap hero-copy">
+    <div class="hero-media">
+      <img src={hero} alt="" width="1920" height="1080" fetchpriority="high" />
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <div class="hero-top">
+      <span class="live"><i></i> Building with LLMs</span>
+      <span>NYC · Remote</span>
+    </div>
+
+    <div class="hero-body">
       <h1 class="brand">Garvit Khurana</h1>
-      <p class="role">AI engineer &amp; AI product lead</p>
+      <p class="role">AI engineer / AI product</p>
       <p class="lede">
-        I build and ship LLM products for capital markets — strategy, systems, and the messy middle where they meet.
+        Shipping the systems that turn models into products — currently on BlackRock’s AI Accelerator.
       </p>
-      <div class="ctas">
-        <a class="btn" href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn ghost" href="mailto:garvit.khurana@columbia.edu">Email</a>
-      </div>
+      <nav class="ctas" aria-label="Primary">
+        <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:garvit.khurana@columbia.edu">Email</a>
+      </nav>
     </div>
   </header>
 
   <main>
     <section id="about">
       <div class="wrap">
-        <p class="section-label">About</p>
-        <h2 class="section-title">Product depth. Engineering fluency.</h2>
+        <p class="kicker">Now</p>
+        <h2 class="section-title">In the model layer of markets.</h2>
         <p class="about-copy">
-          Currently <strong>Product Lead / Engineer II</strong> on BlackRock’s AI Accelerator.
+          <strong>Product Lead / Engineer II</strong> on BlackRock’s AI Accelerator.
           I own roadmap and delivery for RAG systems that create and process securities —
-          from public bonds into private credit — and I still get close enough to the models,
-          data, and pipelines to ship with conviction.
+          from public bonds into private credit — and stay close enough to the models,
+          data, and pipelines to ship without hand-waving.
         </p>
+        <div class="stack" aria-label="Focus areas">
+          <span>LLMs</span>
+          <span>RAG</span>
+          <span>Product</span>
+          <span>Capital markets</span>
+          <span>Private credit</span>
+          <span>Python</span>
+          <span>Azure</span>
+        </div>
       </div>
     </section>
 
     <section id="impact">
       <div class="wrap">
-        <p class="section-label">Selected impact</p>
+        <p class="kicker">Signal</p>
         <div class="metrics">
           <div class="metric">
             <strong>40%</strong>
-            <span>faster time-to-market for new public bonds via RAG security creation</span>
+            <span>faster bond time-to-market from a RAG security-creation system</span>
           </div>
           <div class="metric">
             <strong>80%</strong>
-            <span>less manual intervention after launching the Private Governance Platform</span>
+            <span>less manual work after shipping Private Governance Platform</span>
           </div>
           <div class="metric">
             <strong>20%</strong>
-            <span>higher reporting accuracy across private markets data workflows</span>
+            <span>lift in reporting accuracy across private markets data</span>
           </div>
         </div>
       </div>
@@ -76,38 +74,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section id="experience">
       <div class="wrap">
-        <p class="section-label">Experience</p>
-        <h2 class="section-title">Where I’ve shipped</h2>
+        <p class="kicker">Work</p>
+        <h2 class="section-title">Where it’s shipped.</h2>
         <div class="jobs">
           <article class="job">
-            <p class="job-dates">2024 – Now</p>
+            <p class="job-dates">2024 — Now</p>
             <div>
               <h3>Product Lead / Engineer II, AI Accelerator · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>Own product strategy and roadmap for a RAG-based security creation tool used by internal and external clients.</li>
-                <li>Scaled from corporate bonds into complex private credit deals and AI-driven workflows.</li>
-                <li>Partner with data scientists on SQL, telemetry, and Azure pipelines that drive roadmap decisions.</li>
+                <li>Own strategy and roadmap for a RAG security-creation tool used internally and by clients.</li>
+                <li>Scaled the system from corporate bonds into complex private credit workflows.</li>
+                <li>Partner with data scientists on SQL, telemetry, and Azure pipelines that drive the roadmap.</li>
               </ul>
             </div>
           </article>
           <article class="job">
-            <p class="job-dates">2022 – 2024</p>
+            <p class="job-dates">2022 — 2024</p>
             <div>
               <h3>Private Markets Associate · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>Launched the Private Governance Platform across PE, private funds, infrastructure, and private credit.</li>
-                <li>Centralized data governance into Aladdin dashboards; +20% reporting accuracy, −80% manual work.</li>
-                <li>Built NLP tools for issuer search and enrichment for PM teams.</li>
+                <li>Launched Private Governance Platform across PE, funds, infrastructure, and private credit.</li>
+                <li>Centralized data quality into Aladdin dashboards; +20% accuracy, −80% manual work.</li>
+                <li>Built NLP issuer-search tooling for portfolio teams.</li>
               </ul>
             </div>
           </article>
           <article class="job">
             <p class="job-dates">Earlier</p>
             <div>
-              <h3>Product, data &amp; ML roles · <span class="co">APG · PadSquad · HPE</span></h3>
+              <h3>Product · data · ML · <span class="co">APG · PadSquad · HPE</span></h3>
               <ul>
-                <li>ESG + NLP/ML on Azure Databricks (APG); growth product automation in AdTech (PadSquad).</li>
-                <li>CNN air-gesture recognition at 97.9% accuracy for assistive tech (HPE).</li>
+                <li>ESG + NLP/ML on Azure Databricks; growth product in AdTech; CNN assistive-tech at 97.9%.</li>
                 <li>Columbia MSBA · VIT CSE · four ML research publications.</li>
               </ul>
             </div>
@@ -118,12 +115,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section id="contact">
       <div class="wrap">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Let’s talk AI products</h2>
+        <p class="kicker">Contact</p>
+        <h2 class="section-title">If you’re building with AI.</h2>
         <div class="contact-row">
           <a href="mailto:garvit.khurana@columbia.edu">garvit.khurana@columbia.edu</a>
-          <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">linkedin.com/in/garvitkhurana</a>
-          <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">github.com/garvitkhurana</a>
+          <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
@@ -131,6 +128,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <footer class="wrap">
     <span>© <span id="y"></span> Garvit Khurana</span>
-    <span>AI engineer · AI product · NYC</span>
+    <span>AI engineer · AI product</span>
   </footer>
 </BaseLayout>

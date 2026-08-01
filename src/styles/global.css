@@ -1,14 +1,14 @@
 :root {
-  --ink: #14201c;
-  --ink-soft: #3a4a44;
-  --paper: #f3efe6;
-  --paper-2: #e8e2d4;
-  --accent: #1f6f5b;
-  --accent-hot: #c45c26;
-  --line: rgba(20, 32, 28, 0.14);
-  --glow: rgba(31, 111, 91, 0.18);
-  --max: 1120px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --bg: #f4f4f1;
+  --bg-deep: #ecece8;
+  --ink: #0b0b0c;
+  --mute: #5c5c63;
+  --line: rgba(11, 11, 12, 0.12);
+  --signal: #d6ff3f;
+  --hero-ink: #f5f5f2;
+  --hero-mute: rgba(245, 245, 242, 0.72);
+  --max: 1180px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -22,155 +22,162 @@ html {
 }
 
 body {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: Syne, ui-sans-serif, system-ui, sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(1200px 700px at 85% -10%, rgba(196, 92, 38, 0.12), transparent 55%),
-    radial-gradient(900px 600px at -10% 20%, var(--glow), transparent 50%),
-    linear-gradient(165deg, var(--paper) 0%, var(--paper-2) 100%);
-  background-attachment: fixed;
-  line-height: 1.55;
+  background: var(--bg);
+  line-height: 1.5;
   min-height: 100vh;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: inherit;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
 }
 
-a:hover {
-  color: var(--accent);
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .wrap {
-  width: min(100% - 2.5rem, var(--max));
+  width: min(100% - 2rem, var(--max));
   margin-inline: auto;
 }
 
-.atmosphere {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.atmosphere-svg {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  animation: fadeScene 1.2s var(--ease) 0.05s forwards;
-}
-
-.beam {
-  stroke-dasharray: 1600;
-  stroke-dashoffset: 1600;
-  animation: drawBeam 1.8s var(--ease) 0.25s forwards;
-}
-
-.orb-a {
-  transform-origin: 980px 160px;
-  animation: drift 12s ease-in-out infinite alternate;
-}
-
-.orb-b {
-  transform-origin: 220px 520px;
-  animation: drift 16s ease-in-out infinite alternate-reverse;
-}
-
+/* ——— HERO ——— */
 .hero {
   position: relative;
-  z-index: 1;
   min-height: 100svh;
   display: grid;
   align-items: end;
-  padding: 1.5rem 0 3rem;
+  overflow: hidden;
+  color: var(--hero-ink);
+  isolation: isolate;
 }
 
-.hero-copy {
-  max-width: 40rem;
-  padding-bottom: 1rem;
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transform: scale(1.06);
+  animation: heroZoom 2.4s var(--ease) forwards;
+  filter: contrast(1.08) saturate(0.85);
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 10, 0.25) 0%, rgba(8, 8, 10, 0.55) 42%, rgba(8, 8, 10, 0.88) 100%),
+    linear-gradient(90deg, rgba(8, 8, 10, 0.55) 0%, transparent 55%);
+}
+
+.hero-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hero-mute);
+  opacity: 0;
+  animation: rise 0.8s var(--ease) 0.15s forwards;
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.live i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 0 rgba(214, 255, 63, 0.7);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+.hero-body {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+  padding: 0 0 clamp(2rem, 6vw, 3.5rem);
 }
 
 .brand {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(3.8rem, 12vw, 8.5rem);
   font-weight: 800;
-  font-size: clamp(3.6rem, 11vw, 7.2rem);
-  line-height: 0.9;
-  letter-spacing: -0.045em;
-  max-width: 10ch;
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+  max-width: 9ch;
   opacity: 0;
-  transform: translateY(28px);
-  animation: rise 1s var(--ease) 0.1s forwards;
+  transform: translateY(40px);
+  animation: rise 1s var(--ease) 0.2s forwards;
 }
 
 .role {
-  margin-top: 1.25rem;
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
-  letter-spacing: -0.02em;
-  color: var(--accent);
+  margin-top: 1.35rem;
+  font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--signal);
   opacity: 0;
-  transform: translateY(18px);
-  animation: rise 0.9s var(--ease) 0.28s forwards;
+  transform: translateY(24px);
+  animation: rise 0.9s var(--ease) 0.35s forwards;
 }
 
 .lede {
   margin-top: 0.85rem;
-  max-width: 34ch;
-  font-size: clamp(1.05rem, 2vw, 1.22rem);
-  color: var(--ink-soft);
+  max-width: 36ch;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 500;
+  color: var(--hero-mute);
   opacity: 0;
-  transform: translateY(18px);
-  animation: rise 0.9s var(--ease) 0.4s forwards;
+  transform: translateY(24px);
+  animation: rise 0.9s var(--ease) 0.45s forwards;
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
+  gap: 1.5rem;
+  margin-top: 1.85rem;
   opacity: 0;
-  transform: translateY(18px);
-  animation: rise 0.9s var(--ease) 0.52s forwards;
+  transform: translateY(24px);
+  animation: rise 0.9s var(--ease) 0.55s forwards;
 }
 
-.btn {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
-  padding: 0.85rem 1.25rem;
-  border-radius: 999px;
-  border: 1.5px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+.ctas a {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
-  transition:
-    transform 0.35s var(--ease),
-    background 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
+  color: var(--hero-ink);
+  border-bottom: 1px solid rgba(245, 245, 242, 0.35);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--paper);
-  transform: translateY(-2px);
-}
-
-.btn.ghost {
-  background: transparent;
-  color: var(--ink);
-}
-
-.btn.ghost:hover {
-  background: var(--ink);
-  color: var(--paper);
+.ctas a:hover {
+  color: var(--signal);
+  border-color: var(--signal);
 }
 
 @keyframes rise {
@@ -180,79 +187,109 @@ a:hover {
   }
 }
 
-@keyframes fadeScene {
+@keyframes heroZoom {
   to {
-    opacity: 1;
+    transform: scale(1);
   }
 }
 
-@keyframes drawBeam {
-  to {
-    stroke-dashoffset: 0;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(214, 255, 63, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 0.55rem rgba(214, 255, 63, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(214, 255, 63, 0);
   }
 }
 
-@keyframes drift {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(-18px, 22px) scale(1.06);
-  }
-}
-
-main,
-footer {
-  position: relative;
-  z-index: 1;
-}
-
+/* ——— CONTENT ——— */
 section {
-  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
   border-top: 1px solid var(--line);
 }
 
-.section-label {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+.kicker {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
+  color: var(--mute);
+  margin-bottom: 1rem;
 }
 
 .section-title {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  max-width: 18ch;
-  margin-bottom: 1.5rem;
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  max-width: 16ch;
+  margin-bottom: 1.35rem;
 }
 
 .about-copy {
-  max-width: 58ch;
-  font-size: 1.15rem;
-  color: var(--ink-soft);
+  max-width: 54ch;
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: var(--mute);
 }
 
 .about-copy strong {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.stack span {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--line);
+  background: var(--bg-deep);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1.5rem;
+}
+
+.metric strong {
+  display: block;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.metric span {
+  display: block;
+  margin-top: 0.7rem;
+  max-width: 18ch;
+  color: var(--mute);
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .jobs {
   display: grid;
-  gap: 0;
 }
 
 .job {
   display: grid;
-  grid-template-columns: minmax(7rem, 10rem) 1fr;
-  gap: 1.25rem 2rem;
-  padding: 1.6rem 0;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem 2rem;
+  padding: 1.5rem 0;
   border-top: 1px solid var(--line);
 }
 
@@ -261,96 +298,83 @@ section {
 }
 
 .job-dates {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  padding-top: 0.2rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+  padding-top: 0.35rem;
 }
 
 .job h3 {
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.15rem;
   font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .job .co {
-  color: var(--accent);
+  color: var(--mute);
   font-weight: 600;
 }
 
 .job ul {
-  margin-top: 0.65rem;
-  padding-left: 1.1rem;
-  color: var(--ink-soft);
+  margin-top: 0.7rem;
+  padding-left: 1.05rem;
+  color: var(--mute);
   display: grid;
-  gap: 0.35rem;
+  gap: 0.4rem;
+  font-weight: 500;
 }
 
 .job li::marker {
-  color: var(--accent-hot);
-}
-
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.metric strong {
-  display: block;
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  letter-spacing: -0.04em;
-  line-height: 1;
   color: var(--ink);
-}
-
-.metric span {
-  display: block;
-  margin-top: 0.55rem;
-  color: var(--ink-soft);
-  max-width: 18ch;
-  font-size: 0.98rem;
 }
 
 .contact-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 1.75rem;
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.contact-row a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.1rem;
+  transition: border-color 0.2s ease;
+}
+
+.contact-row a:hover {
+  border-color: var(--ink);
 }
 
 footer {
-  padding: 2rem 0 3rem;
+  padding: 1.5rem 0 2.5rem;
   border-top: 1px solid var(--line);
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-size: 0.85rem;
-  color: var(--ink-soft);
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
 }
 
-@media (max-width: 820px) {
+@media (max-width: 800px) {
   .brand {
     max-width: none;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
   }
 
   .job {
     grid-template-columns: 1fr;
     gap: 0.35rem;
-  }
-
-  .metrics {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
   }
 }
 
@@ -359,13 +383,11 @@ footer {
   .role,
   .lede,
   .ctas,
-  .atmosphere-svg,
-  .beam,
-  .orb-a,
-  .orb-b {
+  .hero-top,
+  .hero-media img,
+  .live i {
     animation: none;
     opacity: 1;
     transform: none;
-    stroke-dashoffset: 0;
   }
 }
