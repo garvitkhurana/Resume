@@ -2,7 +2,7 @@
 
 Personal site — **AI engineer & AI product lead**.
 
-**Live:** [garvitkhurana.github.io/Resume](https://garvitkhurana.github.io/)
+**Live:** [garvitkhurana.github.io](https://garvitkhurana.github.io/)
 
 Built with [Astro](https://astro.build) (static, near-zero client JS). Deployed to GitHub Pages on push to `master`.
 
