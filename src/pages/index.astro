@@ -1,26 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const portrait = `${import.meta.env.BASE_URL}images/garvit.jpg`;
 ---
 <BaseLayout>
+  <div class="atmosphere" aria-hidden="true">
+    <svg class="atmosphere-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1f6f5b" stop-opacity="0.35" />
+          <stop offset="55%" stop-color="#c45c26" stop-opacity="0.18" />
+          <stop offset="100%" stop-color="#1f6f5b" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g class="grid" stroke="rgba(20,32,28,0.09)" stroke-width="1" fill="none">
+        {Array.from({ length: 16 }, (_, i) => (
+          <line x1={i * 80} y1="0" x2={i * 80} y2="800" />
+        ))}
+        {Array.from({ length: 11 }, (_, i) => (
+          <line x1="0" y1={i * 80} x2="1200" y2={i * 80} />
+        ))}
+      </g>
+      <path class="beam" d="M-40 640 C 280 420, 520 520, 760 280 S 1180 120, 1280 40" stroke="url(#beam)" stroke-width="90" fill="none" stroke-linecap="round" />
+      <circle class="orb orb-a" cx="980" cy="160" r="120" fill="rgba(31,111,91,0.12)" />
+      <circle class="orb orb-b" cx="220" cy="520" r="160" fill="rgba(196,92,38,0.08)" />
+    </svg>
+  </div>
+
   <header class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <h1 class="brand">Garvit Khurana</h1>
-        <p class="role">AI engineer &amp; AI product lead</p>
-        <p class="lede">
-          I build and ship LLM products for capital markets — strategy, systems, and the messy middle where they meet.
-        </p>
-        <div class="ctas">
-          <a class="btn" href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn ghost" href="mailto:garvit.khurana@columbia.edu">Email</a>
-        </div>
+    <div class="wrap hero-copy">
+      <h1 class="brand">Garvit Khurana</h1>
+      <p class="role">AI engineer &amp; AI product lead</p>
+      <p class="lede">
+        I build and ship LLM products for capital markets — strategy, systems, and the messy middle where they meet.
+      </p>
+      <div class="ctas">
+        <a class="btn" href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="mailto:garvit.khurana@columbia.edu">Email</a>
       </div>
-      <figure class="portrait">
-        <img src={portrait} alt="Portrait of Garvit Khurana" width="840" height="1050" loading="eager" />
-      </figure>
     </div>
   </header>
 
