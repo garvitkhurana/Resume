@@ -22,6 +22,7 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
         Shipping the systems that turn models into products — currently on BlackRock’s AI Accelerator.
       </p>
       <nav class="ctas" aria-label="Primary">
+        <a href={`${import.meta.env.BASE_URL}Garvit-Khurana-Resume.pdf`} target="_blank" rel="noopener">Resume</a>
         <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:garvit.khurana@columbia.edu">Email</a>
@@ -35,10 +36,10 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
         <p class="kicker">Now</p>
         <h2 class="section-title">In the model layer of markets.</h2>
         <p class="about-copy">
-          <strong>Product Lead / Engineer II</strong> on BlackRock’s AI Accelerator.
-          I own roadmap and delivery for RAG systems that create and process securities —
-          from public bonds into private credit — and stay close enough to the models,
-          data, and pipelines to ship without hand-waving.
+          Bond ops used to retype terms out of 100+ page prospectuses by hand for every issuance —
+          slow, error-prone, and the actual bottleneck on getting a bond to market.
+          <strong>I own the RAG platform that reads the prospectus and builds the security master directly</strong>,
+          now extended into private credit, where the data’s messier and the happy-path demo stops working.
         </p>
         <div class="stack" aria-label="Focus areas">
           <span>LLMs</span>
@@ -61,13 +62,97 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
             <span>faster bond time-to-market from a RAG security-creation system</span>
           </div>
           <div class="metric">
-            <strong>80%</strong>
-            <span>less manual work after shipping Private Governance Platform</span>
+            <strong>95%</strong>
+            <span>fewer false positives after an anomaly-detection layer on bond onboarding</span>
           </div>
           <div class="metric">
-            <strong>20%</strong>
-            <span>lift in reporting accuracy across private markets data</span>
+            <strong>80%</strong>
+            <span>less manual work, +20% reporting accuracy, after shipping Private Governance Platform</span>
           </div>
+          <div class="metric">
+            <strong>30%</strong>
+            <span>faster incident resolution once the observability framework shipped</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="builds">
+      <div class="wrap">
+        <p class="kicker">Builds</p>
+        <h2 class="section-title">Outside the day job.</h2>
+        <div class="jobs">
+          <article class="job">
+            <p class="job-dates">Building now</p>
+            <div>
+              <h3>Altline</h3>
+              <p class="build-quote">“The model reads. The engine computes.”</p>
+              <ul>
+                <li>An agent that recomputes private-credit borrowing-notice and rate-set numbers straight from the credit agreement, instead of trusting the number an administrative agent sends.</li>
+              </ul>
+              <div class="stack small">
+                <span>LLM extraction</span>
+                <span>FastAPI</span>
+                <span>Private credit</span>
+              </div>
+            </div>
+          </article>
+          <article class="job">
+            <p class="job-dates">Public repo</p>
+            <div>
+              <h3><a href="https://github.com/garvitkhurana/13F-Analyzer" target="_blank" rel="noopener">13F-Analyzer</a></h3>
+              <ul>
+                <li>SEC Form 13F scraper — CUSIP extraction and matching via OpenFIGI, market-data enrichment, and visualization for tracking institutional holdings.</li>
+              </ul>
+              <div class="stack small">
+                <span>Python</span>
+                <span>BeautifulSoup</span>
+                <span>OpenFIGI</span>
+              </div>
+            </div>
+          </article>
+          <article class="job">
+            <p class="job-dates">Personal</p>
+            <div>
+              <h3>DaScie</h3>
+              <ul>
+                <li>Retrieval-augmented LLM agent for knowledge-based Q&amp;A — T5-base with ChromaDB for embeddings, 95% query accuracy.</li>
+              </ul>
+              <div class="stack small">
+                <span>RAG</span>
+                <span>T5</span>
+                <span>ChromaDB</span>
+              </div>
+            </div>
+          </article>
+          <article class="job">
+            <p class="job-dates">Personal</p>
+            <div>
+              <h3>GARCH Volatility Model</h3>
+              <ul>
+                <li>Volatility forecasting for personal portfolio management with a full CI/CD pipeline, data cleaning through deployment, at 96% accuracy.</li>
+              </ul>
+              <div class="stack small">
+                <span>GARCH</span>
+                <span>Docker</span>
+                <span>CI/CD</span>
+              </div>
+            </div>
+          </article>
+          <article class="job">
+            <p class="job-dates">Private repo</p>
+            <div>
+              <h3>Voice Clone</h3>
+              <ul>
+                <li>Local voice-cloning TTS on macOS — Qwen3 via MLX, cloning a voice from a short reference clip, with a FastAPI server and streaming UI.</li>
+              </ul>
+              <div class="stack small">
+                <span>MLX</span>
+                <span>Qwen3</span>
+                <span>FastAPI</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -82,9 +167,9 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
             <div>
               <h3>Product Lead / Engineer II, AI Accelerator · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>Own strategy and roadmap for a RAG security-creation tool used internally and by clients.</li>
-                <li>Scaled the system from corporate bonds into complex private credit workflows.</li>
-                <li>Partner with data scientists on SQL, telemetry, and Azure pipelines that drive the roadmap.</li>
+                <li>Ops was manually retyping bond terms out of prospectuses for every issuance — slow, error-prone. Own the RAG platform that reads the prospectus and builds the security master directly: ~40% faster time-to-market.</li>
+                <li>Scaled the same system into private credit, where deals aren’t standardized and edge cases break naive extraction — redesigned the pipeline to stay usable past the happy path.</li>
+                <li>Run discovery through GTM end to end: talk to the people stuck doing the manual work, turn what breaks them into roadmap, drive adoption with relationship management — not just a launch email.</li>
               </ul>
             </div>
           </article>
@@ -93,9 +178,9 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
             <div>
               <h3>Private Markets Associate · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>Launched Private Governance Platform across PE, funds, infrastructure, and private credit.</li>
-                <li>Centralized data quality into Aladdin dashboards; +20% accuracy, −80% manual work.</li>
-                <li>Built NLP issuer-search tooling for portfolio teams.</li>
+                <li>PE, funds, infra, and private credit teams were each catching data errors their own way, late. Launched the Private Governance Platform to catch them at the source: −80% manual intervention, +20% reporting accuracy into Aladdin.</li>
+                <li>Built NLP issuer-search tooling — PM teams were losing time hunting the same issuer across systems that didn’t talk to each other.</li>
+                <li>Worked with engineering to scale adoption without scaling the error rate.</li>
               </ul>
             </div>
           </article>
@@ -104,8 +189,9 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
             <div>
               <h3>Product · data · ML · <span class="co">APG · PadSquad · HPE</span></h3>
               <ul>
-                <li>ESG + NLP/ML on Azure Databricks; growth product in AdTech; CNN assistive-tech at 97.9%.</li>
-                <li>Columbia MSBA · VIT CSE · four ML research publications.</li>
+                <li>ESG + NLP on hedge-fund 13F filings at APG, −30% portfolio risk; growth product in AdTech; CNN assistive-tech at 97.9%.</li>
+                <li>Columbia MSBA · NUS Data Science &amp; Big Data Certification, Singapore · VIT CSE · four ML research publications.</li>
+                <li>Certified: Anthropic Claude · Stanford ML · Databricks LLMs, App→Production.</li>
               </ul>
             </div>
           </article>
@@ -117,8 +203,13 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
       <div class="wrap">
         <p class="kicker">Contact</p>
         <h2 class="section-title">If you’re building with AI.</h2>
+        <p class="ask">
+          Looking for Senior / Founding PM roles where the product is AI making a genuinely
+          complex, high-stakes domain usable — NYC, California, US remote, London, Canada.
+        </p>
         <div class="contact-row">
           <a href="mailto:garvit.khurana@columbia.edu">garvit.khurana@columbia.edu</a>
+          <a href={`${import.meta.env.BASE_URL}Garvit-Khurana-Resume.pdf`} target="_blank" rel="noopener">Resume</a>
           <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
         </div>

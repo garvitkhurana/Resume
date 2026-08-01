@@ -1,9 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Project Pages site: https://garvitkhurana.github.io/Resume/
+// User Pages site: https://garvitkhurana.github.io/
 export default defineConfig({
   site: 'https://garvitkhurana.github.io',
-  base: '/Resume',
   trailingSlash: 'always',
 });
