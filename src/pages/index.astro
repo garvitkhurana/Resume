@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const portrait = `${import.meta.env.BASE_URL}images/garvit.jpg`;
+---
+<BaseLayout>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="brand">Garvit Khurana</h1>
+        <p class="role">AI engineer &amp; AI product lead</p>
+        <p class="lede">
+          I build and ship LLM products for capital markets — strategy, systems, and the messy middle where they meet.
+        </p>
+        <div class="ctas">
+          <a class="btn" href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost" href="mailto:garvit.khurana@columbia.edu">Email</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src={portrait} alt="Portrait of Garvit Khurana" width="840" height="1050" loading="eager" />
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="wrap">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Product depth. Engineering fluency.</h2>
+        <p class="about-copy">
+          Currently <strong>Product Lead / Engineer II</strong> on BlackRock’s AI Accelerator.
+          I own roadmap and delivery for RAG systems that create and process securities —
+          from public bonds into private credit — and I still get close enough to the models,
+          data, and pipelines to ship with conviction.
+        </p>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="wrap">
+        <p class="section-label">Selected impact</p>
+        <div class="metrics">
+          <div class="metric">
+            <strong>40%</strong>
+            <span>faster time-to-market for new public bonds via RAG security creation</span>
+          </div>
+          <div class="metric">
+            <strong>80%</strong>
+            <span>less manual intervention after launching the Private Governance Platform</span>
+          </div>
+          <div class="metric">
+            <strong>20%</strong>
+            <span>higher reporting accuracy across private markets data workflows</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Where I’ve shipped</h2>
+        <div class="jobs">
+          <article class="job">
+            <p class="job-dates">2024 – Now</p>
+            <div>
+              <h3>Product Lead / Engineer II, AI Accelerator · <span class="co">BlackRock</span></h3>
+              <ul>
+                <li>Own product strategy and roadmap for a RAG-based security creation tool used by internal and external clients.</li>
+                <li>Scaled from corporate bonds into complex private credit deals and AI-driven workflows.</li>
+                <li>Partner with data scientists on SQL, telemetry, and Azure pipelines that drive roadmap decisions.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <p class="job-dates">2022 – 2024</p>
+            <div>
+              <h3>Private Markets Associate · <span class="co">BlackRock</span></h3>
+              <ul>
+                <li>Launched the Private Governance Platform across PE, private funds, infrastructure, and private credit.</li>
+                <li>Centralized data governance into Aladdin dashboards; +20% reporting accuracy, −80% manual work.</li>
+                <li>Built NLP tools for issuer search and enrichment for PM teams.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <p class="job-dates">Earlier</p>
+            <div>
+              <h3>Product, data &amp; ML roles · <span class="co">APG · PadSquad · HPE</span></h3>
+              <ul>
+                <li>ESG + NLP/ML on Azure Databricks (APG); growth product automation in AdTech (PadSquad).</li>
+                <li>CNN air-gesture recognition at 97.9% accuracy for assistive tech (HPE).</li>
+                <li>Columbia MSBA · VIT CSE · four ML research publications.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Let’s talk AI products</h2>
+        <div class="contact-row">
+          <a href="mailto:garvit.khurana@columbia.edu">garvit.khurana@columbia.edu</a>
+          <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">linkedin.com/in/garvitkhurana</a>
+          <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">github.com/garvitkhurana</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="y"></span> Garvit Khurana</span>
+    <span>AI engineer · AI product · NYC</span>
+  </footer>
+</BaseLayout>
