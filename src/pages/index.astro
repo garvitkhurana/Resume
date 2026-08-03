@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const hero = `${import.meta.env.BASE_URL}hero.jpg`;
+const resume = `${import.meta.env.BASE_URL}Garvit-Khurana-Resume.pdf`;
 ---
 <BaseLayout>
   <header class="hero">
@@ -11,18 +12,19 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
     <div class="hero-shade" aria-hidden="true"></div>
 
     <div class="hero-top">
-      <span class="live"><i></i> Building with LLMs</span>
-      <span>NYC · Remote</span>
+      <span class="live"><i></i> NYC · Remote</span>
+      <span class="mono">BlackRock AI Accelerator</span>
     </div>
 
     <div class="hero-body">
       <h1 class="brand">Garvit Khurana</h1>
-      <p class="role">AI engineer / AI product</p>
+      <p class="role">AI Product Lead &amp; Engineer</p>
       <p class="lede">
-        Shipping the systems that turn models into products — currently on BlackRock’s AI Accelerator.
+        Shipping LLM and RAG systems on live capital-markets workflows —
+        model, infra, and finance-grade evals in one loop.
       </p>
       <nav class="ctas" aria-label="Primary">
-        <a href={`${import.meta.env.BASE_URL}Garvit-Khurana-Resume.pdf`} target="_blank" rel="noopener">Resume</a>
+        <a href={resume} target="_blank" rel="noopener">Resume</a>
         <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:garvit.khurana@columbia.edu">Email</a>
@@ -31,168 +33,130 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
   </header>
 
   <main>
-    <section id="about">
+    <section id="about" class="reveal">
       <div class="wrap">
         <p class="kicker">Now</p>
         <h2 class="section-title">In the model layer of markets.</h2>
         <p class="about-copy">
-          Bond ops used to retype terms out of 100+ page prospectuses by hand for every issuance —
-          slow, error-prone, and the actual bottleneck on getting a bond to market.
-          <strong>I own the RAG platform that reads the prospectus and builds the security master directly</strong>,
-          now extended into private credit, where the data’s messier and the happy-path demo stops working.
+          Bond ops used to retype terms out of 100+ page prospectuses by hand —
+          slow, error-prone, and the bottleneck on getting a bond to market.
+          <strong>I own the RAG workflow that turns those prospectuses into structured security records</strong>,
+          cutting time-to-market ~40%, then extended the same loop into private credit
+          where the docs are messier and naive extraction breaks.
         </p>
-        <div class="stack" aria-label="Focus areas">
-          <span>LLMs</span>
-          <span>RAG</span>
-          <span>Product</span>
-          <span>Capital markets</span>
-          <span>Private credit</span>
-          <span>Python</span>
-          <span>Azure</span>
-        </div>
-      </div>
-    </section>
+        <p class="about-copy secondary">
+          Day to day: roadmap and delivery across model (RAG, prompting, extraction),
+          infra (APIs, pipelines, Azure), and evals/tracing so bad fields fail loudly
+          before they reach a client workflow.
+        </p>
 
-    <section id="impact">
-      <div class="wrap">
-        <p class="kicker">Signal</p>
-        <div class="metrics">
-          <div class="metric">
-            <strong>40%</strong>
-            <span>faster bond time-to-market from a RAG security-creation system</span>
+        <div class="loop" aria-label="How the work is structured">
+          <div class="loop-item">
+            <span class="loop-label">Model</span>
+            <p>OpenAI / Claude · LangChain · RAG · ChromaDB · Structured outputs · Tool calling</p>
           </div>
-          <div class="metric">
-            <strong>95%</strong>
-            <span>fewer false positives after an anomaly-detection layer on bond onboarding</span>
+          <div class="loop-item">
+            <span class="loop-label">Infra</span>
+            <p>Python · FastAPI · SQL · PySpark · Azure / AWS · Databricks · ETL</p>
           </div>
-          <div class="metric">
-            <strong>80%</strong>
-            <span>less manual work, +20% reporting accuracy, after shipping Private Governance Platform</span>
-          </div>
-          <div class="metric">
-            <strong>30%</strong>
-            <span>faster incident resolution once the observability framework shipped</span>
+          <div class="loop-item">
+            <span class="loop-label">Evals / Tracing</span>
+            <p>OpenTelemetry · Azure Monitor · LangSmith · Golden-set field checks</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="builds">
+    <section id="builds" class="reveal">
       <div class="wrap">
         <p class="kicker">Builds</p>
         <h2 class="section-title">Outside the day job.</h2>
-        <div class="jobs">
-          <article class="job">
-            <p class="job-dates">Building now</p>
-            <div>
+        <div class="builds">
+          <article class="build">
+            <div class="build-meta">
+              <span class="mono">Building now</span>
               <h3>Altline</h3>
-              <p class="build-quote">“The model reads. The engine computes.”</p>
-              <ul>
-                <li>An agent that recomputes private-credit borrowing-notice and rate-set numbers straight from the credit agreement, instead of trusting the number an administrative agent sends.</li>
-              </ul>
-              <div class="stack small">
-                <span>LLM extraction</span>
-                <span>FastAPI</span>
-                <span>Private credit</span>
-              </div>
+            </div>
+            <div class="build-body">
+              <p class="build-quote">The model reads. The engine verifies.</p>
+              <p>
+                LLM extracts terms from a credit agreement; a rules engine recomputes
+                borrowing-notice and rate-set numbers instead of trusting what an
+                administrative agent sends. Agentic back office for alternative assets.
+              </p>
+              <p class="build-tech mono">LLM extraction · Guardrails · FastAPI</p>
             </div>
           </article>
-          <article class="job">
-            <p class="job-dates">Public repo</p>
-            <div>
-              <h3><a href="https://github.com/garvitkhurana/13F-Analyzer" target="_blank" rel="noopener">13F-Analyzer</a></h3>
-              <ul>
-                <li>SEC Form 13F scraper — CUSIP extraction and matching via OpenFIGI, market-data enrichment, and visualization for tracking institutional holdings.</li>
-              </ul>
-              <div class="stack small">
-                <span>Python</span>
-                <span>BeautifulSoup</span>
-                <span>OpenFIGI</span>
-              </div>
+
+          <article class="build">
+            <div class="build-meta">
+              <span class="mono">Public</span>
+              <h3>
+                <a href="https://github.com/garvitkhurana/agent-relay" target="_blank" rel="noopener">agent-relay</a>
+              </h3>
+            </div>
+            <div class="build-body">
+              <p>
+                Hands an in-progress coding task to the next available agent
+                (Claude, Codex, Cursor) when one hits a rate limit — git worktrees
+                carry the file state so you don’t restart the prompt from scratch.
+              </p>
+              <p class="build-tech mono">Git · CLI · Multi-agent</p>
             </div>
           </article>
-          <article class="job">
-            <p class="job-dates">Public repo</p>
-            <div>
-              <h3><a href="https://github.com/garvitkhurana/agent-relay" target="_blank" rel="noopener">agent-relay</a></h3>
-              <ul>
-                <li>Hands an in-progress coding task off to the next available agent (Claude, Codex, Cursor) when one hits a rate limit or quota — uses git worktrees to carry over the actual file state instead of restarting the prompt from scratch.</li>
-              </ul>
-              <div class="stack small">
-                <span>Git</span>
-                <span>CLI</span>
-                <span>Multi-agent</span>
-              </div>
+
+          <article class="build">
+            <div class="build-meta">
+              <span class="mono">Public</span>
+              <h3>
+                <a href="https://github.com/garvitkhurana/voice-clone" target="_blank" rel="noopener">voice-clone</a>
+              </h3>
             </div>
-          </article>
-          <article class="job">
-            <p class="job-dates">Personal</p>
-            <div>
-              <h3>GARCH Volatility Model</h3>
-              <ul>
-                <li>Volatility forecasting for personal portfolio management with a full CI/CD pipeline, data cleaning through deployment, at 96% accuracy.</li>
-              </ul>
-              <div class="stack small">
-                <span>GARCH</span>
-                <span>Docker</span>
-                <span>CI/CD</span>
-              </div>
-            </div>
-          </article>
-          <article class="job">
-            <p class="job-dates">Private repo</p>
-            <div>
-              <h3>Voice Clone</h3>
-              <ul>
-                <li>Local voice-cloning TTS on macOS — Qwen3 via MLX, cloning a voice from a short reference clip, with a FastAPI server and streaming UI.</li>
-              </ul>
-              <div class="stack small">
-                <span>MLX</span>
-                <span>Qwen3</span>
-                <span>FastAPI</span>
-              </div>
+            <div class="build-body">
+              <p>
+                Local voice-clone TTS on Mac (Qwen3 / MLX) with a FastAPI UI —
+                a personal project on on-device inference.
+              </p>
+              <p class="build-tech mono">MLX · Qwen3 · FastAPI</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="experience">
+    <section id="experience" class="reveal">
       <div class="wrap">
         <p class="kicker">Work</p>
         <h2 class="section-title">Where it’s shipped.</h2>
         <div class="jobs">
           <article class="job">
-            <p class="job-dates">2024 — Now</p>
+            <p class="job-dates mono">2024 — Now</p>
             <div>
               <h3>Product Lead / Engineer II, AI Accelerator · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>Took a prospectus-scraper tool 0-to-1 into a production RAG pipeline — LLM-based structured extraction over 100+ page bond prospectuses feeding a security master directly, replacing manual retyping and cutting time-to-market ~40%.</li>
-                <li>Scaled the pipeline into private credit, where non-standardized deals break naive extraction — added a guardrails layer (rules-based verification on top of LLM output: 25% less manual review, 95% fewer false positives) and production-grade observability/tracing (30% faster incident resolution) to keep it reliable past the happy path.</li>
-                <li>Forward-deployed across client segments: partner with data science on SQL, telemetry, and Azure pipelines so roadmap bets come from where the system fails in production, not a slide deck; own GTM and adoption directly with relationship management and client teams.</li>
-                <li>Run discovery through launch end to end: market research, client feedback, epics and user stories, backlog prioritization in Jira against business and AI strategy.</li>
+                <li>Owned 0→1 for an internal LLM/RAG workflow that turns long bond prospectuses into structured security records — less manual retyping, ~40% faster time-to-market for new public bonds.</li>
+                <li>Extended into private credit: tightened model → infra → evals/tracing so field validation and traced extraction runs fail loudly before bad data hits a client workflow.</li>
+                <li>Work with client and RM teams on adoption; partner with data science on SQL, telemetry, and Azure so prioritization tracks what breaks in use.</li>
               </ul>
             </div>
           </article>
           <article class="job">
-            <p class="job-dates">2022 — 2024</p>
+            <p class="job-dates mono">2022 — 2024</p>
             <div>
               <h3>Private Markets Associate · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>PE, funds, infra, and private credit teams were each catching data errors their own way, late. Launched the Private Governance Platform to catch them at the source: −80% manual intervention, +20% reporting accuracy into Aladdin.</li>
-                <li>Built NLP issuer-search tooling — PM teams were losing time hunting the same issuer across systems that didn’t talk to each other.</li>
-                <li>Worked with engineering to scale adoption without scaling the error rate.</li>
+                <li>Launched the Private Governance Platform after teams were catching data errors late and separately: −80% manual intervention, +20% reporting accuracy into Aladdin.</li>
+                <li>Built NLP issuer-search so PMs weren’t hunting the same issuer across systems that didn’t talk to each other.</li>
               </ul>
             </div>
           </article>
           <article class="job">
-            <p class="job-dates">Earlier</p>
+            <p class="job-dates mono">Earlier</p>
             <div>
               <h3>Product · data · ML · <span class="co">APG · PadSquad · HPE</span></h3>
               <ul>
-                <li>ESG + NLP on hedge-fund 13F filings at APG, −30% portfolio risk; growth product in AdTech; CNN assistive-tech at 97.9%.</li>
-                <li>Columbia MSBA · NUS Data Science &amp; Big Data Certification, Singapore · VIT CSE · four ML research publications.</li>
-                <li>Certified: Anthropic Claude · Stanford ML · Databricks LLMs, App→Production.</li>
+                <li>ESG + NLP on 13F filings at APG; growth product in AdTech; CNN assistive-tech at HPE.</li>
+                <li>Columbia MSBA · VIT CSE · NUS Data Science · four ML research publications.</li>
               </ul>
             </div>
           </article>
@@ -200,17 +164,17 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
       </div>
     </section>
 
-    <section id="contact">
-      <div class="wrap">
+    <section id="contact" class="reveal">
+      <div class="wrap contact-block">
         <p class="kicker">Contact</p>
         <h2 class="section-title">If you’re building with AI.</h2>
         <p class="ask">
-          Looking for Senior / Founding PM roles where the product is AI making a genuinely
-          complex, high-stakes domain usable — NYC, California, US remote, London, Canada.
+          Open to roles where the product is AI in a complex, high-stakes domain —
+          NYC, California, US remote, London, Canada.
         </p>
         <div class="contact-row">
           <a href="mailto:garvit.khurana@columbia.edu">garvit.khurana@columbia.edu</a>
-          <a href={`${import.meta.env.BASE_URL}Garvit-Khurana-Resume.pdf`} target="_blank" rel="noopener">Resume</a>
+          <a href={resume} target="_blank" rel="noopener">Resume</a>
           <a href="https://www.linkedin.com/in/garvitkhurana/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/garvitkhurana" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -220,6 +184,6 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
 
   <footer class="wrap">
     <span>© <span id="y"></span> Garvit Khurana</span>
-    <span>AI engineer · AI product</span>
+    <span class="mono">AI Product Lead &amp; Engineer</span>
   </footer>
 </BaseLayout>
