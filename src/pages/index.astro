@@ -112,16 +112,16 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
             </div>
           </article>
           <article class="job">
-            <p class="job-dates">Personal</p>
+            <p class="job-dates">Public repo</p>
             <div>
-              <h3>DaScie</h3>
+              <h3><a href="https://github.com/garvitkhurana/agent-relay" target="_blank" rel="noopener">agent-relay</a></h3>
               <ul>
-                <li>Retrieval-augmented LLM agent for knowledge-based Q&amp;A — T5-base with ChromaDB for embeddings, 95% query accuracy.</li>
+                <li>Hands an in-progress coding task off to the next available agent (Claude, Codex, Cursor) when one hits a rate limit or quota — uses git worktrees to carry over the actual file state instead of restarting the prompt from scratch.</li>
               </ul>
               <div class="stack small">
-                <span>RAG</span>
-                <span>T5</span>
-                <span>ChromaDB</span>
+                <span>Git</span>
+                <span>CLI</span>
+                <span>Multi-agent</span>
               </div>
             </div>
           </article>
@@ -167,9 +167,10 @@ const hero = `${import.meta.env.BASE_URL}hero.jpg`;
             <div>
               <h3>Product Lead / Engineer II, AI Accelerator · <span class="co">BlackRock</span></h3>
               <ul>
-                <li>Ops was manually retyping bond terms out of prospectuses for every issuance — slow, error-prone. Own the RAG platform that reads the prospectus and builds the security master directly: ~40% faster time-to-market.</li>
-                <li>Scaled the same system into private credit, where deals aren’t standardized and edge cases break naive extraction — redesigned the pipeline to stay usable past the happy path.</li>
-                <li>Run discovery through GTM end to end: talk to the people stuck doing the manual work, turn what breaks them into roadmap, drive adoption with relationship management — not just a launch email.</li>
+                <li>Took a prospectus-scraper tool 0-to-1 into a production RAG pipeline — LLM-based structured extraction over 100+ page bond prospectuses feeding a security master directly, replacing manual retyping and cutting time-to-market ~40%.</li>
+                <li>Scaled the pipeline into private credit, where non-standardized deals break naive extraction — added a guardrails layer (rules-based verification on top of LLM output: 25% less manual review, 95% fewer false positives) and production-grade observability/tracing (30% faster incident resolution) to keep it reliable past the happy path.</li>
+                <li>Forward-deployed across client segments: partner with data science on SQL, telemetry, and Azure pipelines so roadmap bets come from where the system fails in production, not a slide deck; own GTM and adoption directly with relationship management and client teams.</li>
+                <li>Run discovery through launch end to end: market research, client feedback, epics and user stories, backlog prioritization in Jira against business and AI strategy.</li>
               </ul>
             </div>
           </article>
